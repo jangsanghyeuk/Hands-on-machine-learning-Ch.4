@@ -1,6 +1,5 @@
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error             #주어진 훈련 데이터에서 모델의 학습 곡선을 그리는 함수 정의     
 from sklearn.model_selection import train_test_split
-
 def plot_learning_curves(model,X,y):
     X_train, X_val, y_train, y_val=train_test_split(X,y,test_size=0.2)
     train_errors, val_errors=[],[]
@@ -13,6 +12,15 @@ def plot_learning_curves(model,X,y):
     plt.plot(np.sqrt(train_errors),"r+",linewidth=2, label="훈련세트")
     plt.plot(np.sqrt(val_errors),"-b",linewidth=3, label="검증세트")
     
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt                           #단순 선형 회귀 모델의 학습 곡선
 lin_reg=LinearRegression()
 plot_learning_curves(lin_reg,X,y)
+
+from sklearn.pipeline import Pipeline                     #10차 다항 회귀 모델의 학습 곡선
+polynomial_regression=Pipeline([
+    ("poly_features",PolynomialFeatures(degree=10, include_bias=False)),
+    ("Lin_reg",LinearRegression()),
+])
+plot_learning_curves(polynomial_regression,X,y)
+plt.axis([0,80,0,3])
+plt.show()
