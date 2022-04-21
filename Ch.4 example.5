@@ -1,0 +1,10 @@
+from sklearn.linear_model import Lasso    #라쏘 회귀 정규방정식 사용
+lasso_reg=Lasso(alpha=0.1)
+lasso_reg.fit(X,y)
+lasso_reg.predict([[1.5]])
+array([0.42479183])
+
+sgd_reg=SGDRegressor(penalty="l1")        #경사하강법사용 패널티 l1
+sgd_reg.fit(X,y.ravel())
+sgd_reg.predict([[1.5]])
+array([0.44147156])
