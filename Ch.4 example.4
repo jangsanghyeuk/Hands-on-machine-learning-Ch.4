@@ -1,10 +1,10 @@
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import Ridge           #릿지회귀 정규방정식 사용
 ridge_reg=Ridge(alpha=1, solver="cholesky")
 ridge_reg.fit(X,y)
 ridge_reg.predict([[1.5]])
 array([0.47524912])
 
-sgd_reg=SGDRegressor(penalty="l2")
+sgd_reg=SGDRegressor(penalty="l2")               #경사하강법 사용 패널티l2
 sgd_reg.fit(X,y.ravel())
 sgd_reg.predict([[1.5]])
 array([0.47617351])
