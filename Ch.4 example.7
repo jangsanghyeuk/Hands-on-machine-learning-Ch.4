@@ -1,0 +1,10 @@
+from sklearn import datasets
+iris = datasets.load_iris()
+list(iris.keys())
+['data', 'target', 'target_names', 'DESCR', 'feature_names', 'filename']
+X = iris["data"][:,3:]                                                     # 꽃잎의 너비 변수만 사용
+y = (iris["target"]==2).astype("int")                                      # iris-Versinica면 1, 아니면 0# 로지스틱 회귀모델 훈련
+from sklearn.linear_model import LogisticRegression
+log_reg = LogisticRegression(solver='liblinear')
+log_reg.fit(X,y)
+arry([1,0])
