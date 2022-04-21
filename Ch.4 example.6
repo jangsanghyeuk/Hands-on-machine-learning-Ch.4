@@ -1,0 +1,5 @@
+from sklearn.linear_model import ElasticNet        #엘라스틱넷 사용
+elastic_net=ElasticNet(alpha=0.1, l1_ratio=0.5)
+elastic_net.fit(X,y)
+elastic_net.predict([[1.5]])
+array([0.44147156])
